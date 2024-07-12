@@ -13,6 +13,7 @@ Paynest is a transaction website that simulates real wallet transactions using N
 - [Contributing](#contributing)
 - [License](#license)
 
+![Home](image.png)
 ## Features
 
 - Simulate wallet transactions
