@@ -1,81 +1,130 @@
-# Turborepo starter
 
-This is an official starter Turborepo.
+# Paynest
 
-## Using this example
+Paynest is a transaction website that simulates real wallet transactions using Next.js, Turborepo, Express.js, and a demo banking server. The project includes Express.js forming a webhook between the banking system and a Prisma-managed PostgreSQL database.
 
-Run the following command:
+## Table of Contents
 
-```sh
-npx create-turbo@latest
-```
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-## What's inside?
+## Features
 
-This Turborepo includes the following packages/apps:
+- Simulate wallet transactions
+- Real-time updates with webhooks
+- Secure and efficient database management with Prisma and PostgreSQL
+- Modular and scalable architecture with Turborepo
 
-### Apps and Packages
+## Tech Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- **Frontend:** Next.js
+- **Backend:** Express.js ,Next.js
+- **Database:** PostgreSQL
+- **ORM:** Prisma
+- **Monorepo Management:** Turborepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## Project Structure
 
 ```
-cd my-turborepo
-pnpm build
+paynet/
+├── apps/
+│   ├── Merchant/              # Next.js frontend for user
+│   └── User_app/              # Next.js frontend for merchant
+│   └── webhook_express/       # Express.js backend for webhook
+│   └──banking_server/         # Express.js backend for demo bank server
+
+├── packages/
+│   ├── config/           # Shared configuration
+│   └── db/               # Prisma setup and database management
+├── .gitignore
+├── package.json
+├── turbo.json            # Turborepo configuration
+└── README.md
 ```
 
-### Develop
+## Setup
 
-To develop all apps and packages, run the following command:
+### Prerequisites
 
-```
-cd my-turborepo
-pnpm dev
-```
+- Node.js (>=14.x)
+- PostgreSQL
+- Prisma CLI
 
-### Remote Caching
+### Installation
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+1. Clone the repository:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+   ```sh
+   git clone https://github.com/your-username/paynet.git
+   cd paynet
+   ```
 
-```
-cd my-turborepo
-npx turbo login
-```
+2. Install dependencies:
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+   ```sh
+   npm install
+   ```
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+3. Set up the database:
 
-```
-npx turbo link
-```
+   ```sh
+   cd packages/db
+   npx prisma migrate dev
+   ```
 
-## Useful Links
+4. Set up environment variables:
 
-Learn more about the power of Turborepo:
+   Create a `.env` file in the root of the project and add your environment variables:
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+   ```env
+   DATABASE_URL="postgresql://username:password@localhost:5432/paynet"
+   ```
+
+## Usage
+
+### Development
+
+1. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+   This will start both the Next.js frontend and the Express.js backend.
+
+### Production
+
+1. Build the project:
+
+   ```sh
+   npm run build
+   ```
+
+2. Start the production server:
+
+   ```sh
+   npm start
+   ```
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-branch`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature-branch`)
+5. Open a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+Feel free to modify the README as per your specific requirements and project details.
