@@ -5,7 +5,7 @@
 Paynest is a transaction website that simulates real wallet transactions using Next.js, Turborepo, Express.js, and a demo banking server. The project includes Express.js forming a webhook between the banking system and a Prisma-managed PostgreSQL database.
 
 ![Home](image.png)
-![transaction](transactios.png)
+![transaction](transactions.png)
 
 ## Table of Contents
 
